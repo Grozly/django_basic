@@ -1,0 +1,42 @@
+{% with request.resolver_match.url_name as url_name %}
+<ul class="menu clearfix">
+    <li class="menu-list"><a href="{% url 'main' %}"
+                             class="menu-link"
+                             {% if url_name == 'main' %}style = "color: #212121;
+                                                        font-weight: 300;
+                                                        border-bottom: 3px solid #212121;"
+                             {% endif %}>HOME</a></li>
+    <li class="menu-list"><a href="{% url 'products:index' %}"
+                             class="menu-link"{% if request.resolver_match.namespace == 'products' %}style = "color: #212121;
+                                                        font-weight: 300;
+                                                        border-bottom: 3px solid #212121;"
+                             {% endif %}>PRODUCTS</a></li>
+    <li class="menu-list"><a href="#" class="menu-link">HISTORY</a></li>
+    <li class="menu-list"><a href="#" class="menu-link">SHOWROOM</a></li>
+    <li class="menu-list"><a href="{% url 'contact' %}"
+                             class="menu-link"{% if url_name == 'contact' %}style = "color: #212121;
+                                                        font-weight: 300;
+                                                        border-bottom: 3px solid #212121;"
+                             {% endif %}>CONTACT</a></li>
+    {% if user.is_authenticated %}
+    <li class="menu-list">
+        <a href="{% url 'auth:edit' %}" class="menu-link">
+            {% if user.first_name %}
+                {{ user.first_name }}
+            {% else %}
+                User
+            {% endif %}
+        </a>
+    </li>
+    <li class="menu-list">
+        <a href="{% url 'auth:logout' %}" class="menu-link">LOGOUT</a>
+    </li>
+    {% else %}
+    <li class="menu-list">
+        <a href="{% url 'auth:login' %}" class="menu-link">LOGIN</a>
+    </li>
+    {% endif %}
+    <li class="menu-list"><a href="#" class="menu-link search"><i class="fas fa-search"></i></a></li>
+    <li class="menu-list"><a href="#" class="menu-link search"><i class="fas fa-shopping-cart"></i></a></li>
+</ul>
+{% endwith %}

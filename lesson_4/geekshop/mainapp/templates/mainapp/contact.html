@@ -1,0 +1,47 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block menu %}
+        <div class="header-page padding-site">
+            <div class="slider-header clearfix">
+            <a href="{% url 'main' %}"><img src="{% static 'img/logo.svg' %}" alt="logo" class="logo"></a>
+            {% include 'mainapp/inc/inc_main_menu.html' %}
+            </div>
+            <div class="header-content">
+            <h2 class="contact-h2">Contact Us</h2>
+            </div>
+        </div>
+{% endblock %}
+{% block content %}
+        <div class="contact-content padding-site">
+            <div class="contact-block contact-block-1">
+                <i id="fa-map" class="fas fa-map-marker-alt"></i>
+                <p class="head-info">California</p>
+                <p class="head-info-group">Phone:</p>
+                <p class="body-info-group">1900 - 1234 -5678</p>
+                <p class="head-info-group">Email:</p>
+                <p class="body-info-group">info@interior.com</p>
+                <p class="head-info-group">Address:</p>
+                <p class="adress-info">12 W 1st St, 90001 Los Angeles, California</p>
+            </div>
+            <div class="contact-block contact-block-2">
+                <i id="fa-map" class="fas fa-map-marker-alt"></i>
+                <p class="head-info">California</p>
+                <p class="head-info-group">Phone:</p>
+                <p class="body-info-group">1900 - 1234 -5678</p>
+                <p class="head-info-group">Email:</p>
+                <p class="body-info-group">info@interior.com</p>
+                <p class="head-info-group">Address:</p>
+                <p class="adress-info">12 W 1st St, 90001 Los Angeles, California</p>
+            </div>
+            <div class="contact-block contact-block-3">
+                <i id="fa-map" class="fas fa-map-marker-alt"></i>
+                <p class="head-info">California</p>
+                <p class="head-info-group">Phone:</p>
+                <p class="body-info-group">1900 - 1234 -5678</p>
+                <p class="head-info-group">Email:</p>
+                <p class="body-info-group">info@interior.com</p>
+                <p class="head-info-group">Address:</p>
+                <p class="adress-info">12 W 1st St, 90001 Los Angeles, California</p>
+            </div>
+        </div>
+{% endblock %}
