@@ -1,0 +1,15 @@
+{% with request.resolver_match.kwargs.pk as url_name %}
+<ul class="tab-controll-ul clearfix">
+    {% for item in links_menu %}
+        <li class="menu-list">
+            <a href="{% url 'products:category' item.pk %}"
+               class = "tab-controll-link
+               {% if url_name == item.pk %}
+               tab-controll-link-active
+               {% endif %}">
+            {{ item.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endwith %}
