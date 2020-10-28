@@ -1,0 +1,22 @@
+<ul class="tab-controll-ul clearfix">
+    <li class="menu-list">
+        <a href="{% url 'products:category' 0 %}"
+           class="tab-controll-link
+            {% if request.resolver_match.kwargs.pk|add:'0' == 0 %}
+            tab-controll-link-active
+            {% endif %}">
+          все
+        </a>
+    </li>
+    {% for item in links_menu %}
+    <li class="menu-list">
+        <a href="{% url 'products:category' item.pk %}"
+        class = "tab-controll-link
+        {% if request.resolver_match.kwargs.pk|add:'0' == item.pk %}
+        tab-controll-link-active
+        {% endif %}">
+        {{ item.name }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,72 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block menu %}
+        <div class="header-page padding-site">
+            <div class="slider-header clearfix">
+            <a href="{% url 'main' %}"><img src="{% static 'img/logo.svg' %}" alt="logo" class="logo"></a>
+            {% include 'mainapp/inc/inc_main_menu.html' %}
+            </div>
+            <div class="header-content">
+            <h2 class="contact-h2">Our Products Range</h2>
+            </div>
+        </div>
+{% endblock %}
+
+{% block content %}
+        <div class="trending-products padding-site">
+            <div class="tab-controll">
+                {% include 'mainapp/inc/inc_categories_menu.html' %}
+            </div>
+
+            <div class="products_list">
+                <div class="title clearfix">
+                    <h2>
+                        Категория: "{{ category.name|title }}"
+                    </h2>
+                </div>
+                <div class="products-container">
+
+                    {% for product in products %}
+                          <div class="featured-box box-1">
+                              <a href="#">
+                                  <img src="/media/{{ product.image }}" alt="product">
+                              </a>
+                              <div class="mask">
+                                      <a href="{% url 'basket:add' product.pk %}" class="featured-box-button">
+                                          <i class="fas fa-angle-right fas-box"></i>
+                                      </a>
+                                      <p class="featured-box-content">{{ product.name }}</p>
+                                      <p class="featured-box-text">{{ product.description }}</p>
+
+                              </div>
+
+                          </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="load-fa">
+                <span class="inner-load"><a href="#"><i id="fa-sync-load" class="fas fa-sync"></i></a></span>
+            </div>
+        </div>
+        <div class="promo-product">
+            <div class="promo-product-1">
+                <div class="promo-product-fullcontent">
+                    <p class="promo-product-exclusive">exclusive</p>
+                    <p class="promo-product-content">Fishnet Chair</p>
+                    <p class="promo-product-text">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
+                    <a href="#" class="slider-button">Order us<i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+            <div class="promo-product-2">
+                <div class="promo-product-fullcontent">
+                    <p class="promo-product-exclusive">exclusive</p>
+                    <p class="promo-product-content">Fishnet Chair</p>
+                    <p class="promo-product-text">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
+                    <a href="#" class="slider-button">Order us<i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
