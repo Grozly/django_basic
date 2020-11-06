@@ -1,0 +1,115 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block menu %}
+<div class="slider padding-site">
+    <div class="slider-header clearfix">
+        <a href="{% url 'main' %}"><img src="{% static "img/logo.svg" %}" alt="logo" class="logo"></a>
+        {% include 'mainapp/inc/inc_main_menu.html' %}
+    </div>
+    <div class="slider-content">
+        <p class="slider-trending">Тренд</p>
+        <h2 class="slider-h2">Стул в сеточку</h2>
+        <p class="slider-text">Сиденье и спинка с обивкой отличной обивкой. Стальная рама, доступна в черном матовом порошковом исполнении</p>
+        <a href="#" class="slider-button">Заказать<i class="fas fa-angle-right"></i></a>
+    </div>
+    <div class="slider-pagination">
+        <div class="circle"><a href="#"></a></div>
+        <div class="circle circle-active"><a href="#"></a></div>
+        <div class="circle"><a href="#"></a></div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="featured padding-site">
+    <div class="featured-navigation">
+        <a href="#" class="featured-link-active">Избранные</a><a href="#" class="featured-link">Новые</a>
+        <a href="{% url 'products:category' 0 %}" class="featured-text">смотреть все <i class="fas fa-angle-right fas-box"></i></a>
+    </div>
+    <div class="featured-boxes">
+        <div class="featured-content">
+            {% for product in products %}
+            <div class="featured-box box-1">
+                <a href="#">
+                    <img src="/media/{{ product.image }}" alt="{{ product.name }}">
+                </a>
+                <div class="mask">
+                    <a href="{% url 'products:product' product.pk %}" class="featured-box-button">
+                        <i class="fas fa-angle-right fas-box"></i>
+                    </a>
+                    <p class="featured-box-content">{{ product.name }}</p>
+                    <p class="featured-box-text">{{ product.short_desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+        <div class="promo-product">
+            <div class="promo-product-1">
+                <div class="promo-product-fullcontent">
+                    <p class="promo-product-exclusive">эксклюзив</p>
+                    <p class="promo-product-content">Стул в сеточку</p>
+                    <p class="promo-product-text">Сиденье и спинка с отличной обивкой. Стальная рама, доступна в матовом цвете.</p>
+                    <a href="#" class="slider-button">Заказать<i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+            <div class="promo-product-2">
+                <div class="promo-product-fullcontent">
+                    <p class="promo-product-exclusive">эксклюзив</p>
+                    <p class="promo-product-content">Стул в сеточку</p>
+                    <p class="promo-product-text">Сиденье и спинка с отличной обивкой. Стальная рама, доступна в матовом цвете.</p>
+                    <a href="#" class="slider-button">Заказать<i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="trending-products padding-site">
+            <div class="trending-products-navigation">
+                <p class="trending-products-content">Трендовые продукты</p>
+                <a href="{% url 'products:category' 0 %}" class="featured-text">смотреть все <i class="fas fa-angle-right fas-box"></i></a>
+            </div>
+            <div class="trending-products-box trending-box-1"><a href="#"></a></div>
+            <div class="trending-products-box trending-box-2"><a href="#"></a></div>
+            <div class="trending-products-box trending-box-3"><a href="#"></a></div>
+            <div class="trending-products-box trending-box-4"><a href="#"></a></div>
+            <div class="trending-products-box trending-box-5"><a href="#"></a></div>
+            <div class="trending-products-box trending-box-6"><a href="#"></a></div>
+        </div>
+        <div class="slider-hot-deals padding-site">
+            <div class="slider-hot-deals-content">
+            <p class="slider-hot-deal">Горячее предложение</p>
+            <h2 class="slider-h2">Отличный стол</h2>
+            <p class="slider-text">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black</p>
+            <a href="#" class="slider-button">Заказать<i class="fas fa-angle-right"></i></a>
+            </div>
+            <div class="slider-pagination">
+                <div class="circle"><a href="#"></a></div>
+                <div class="circle circle-active"><a href="#"></a></div>
+                <div class="circle"><a href="#"></a></div>
+            </div>
+        </div>
+        <div class="exclusive-product padding-site">
+           <div class="exclusive-product-full-content">
+                <div class="exclusive-product-full">
+                    <div class="exclusive-product-full-content-text">
+                    <p class="promo-product-exclusive">эксклюзив</p>
+                        <p class="promo-product-content">Стул в сеточку</p>
+                        <p class="promo-product-text">Сиденье и спинка с отличной обивкой. Стальная рама, доступна в матовом цвете.</p>
+                        <a href="#" class="slider-button">Заказать<i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+                <div class="exclusive-product-box exclusive-box-1"></div>
+                <div class="exclusive-product-box exclusive-box-2"></div>
+                <div class="exclusive-product-box exclusive-box-3"></div>
+                <div class="exclusive-product-box exclusive-box-4"></div>
+            </div>
+        </div>
+<div class="mobile-app padding-site">
+    <div class="mobile-app-content">
+        <p class="mobile-app-mobile-app">мобильное приложение</p>
+        <h2 class="mobile-app-h2">Найти. Следить. Лучший.</h2>
+        <p class="mobile-app-text">Сохраните избранное и поделитесь своим стилем.</p>
+        <a href="#" class="mobile-app-link"><img src="{% static 'img/app-store.jpg' %}" alt="app-store"></a>
+        <a href="#" class="mobile-app-link"><img src="{% static 'img/google-play.jpg' %}" alt="google-play"></a>
+    </div>
+</div>
+{% endblock %}

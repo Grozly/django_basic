@@ -1,0 +1,29 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block menu %}
+    <div class="header-page padding-site">
+        <div class="slider-header clearfix">
+            <a href="{% url 'main' %}"><img src="{% static 'img/logo.svg' %}" alt="logo" class="logo"></a>
+            {% include 'mainapp/inc/inc_main_menu.html' %}
+        </div>
+        <div class="header-content">
+            <h2 class="contact-h2">Our Products Range</h2>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    {% for product in products %}
+        <div class="featured-box box-1">
+            <a href="#">
+                <img src="/media/{{ product.image }}" alt="{{ product.name }}">
+            </a>
+            <div class="mask">
+                <a href="{% url 'products:product' product.pk %}" class="featured-box-button">
+                    <i class="fas fa-angle-right fas-box"></i>
+                </a>
+                <p class="featured-box-content">{{ product.name }}</p>
+                <p class="featured-box-text">{{ product.short_desc }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
